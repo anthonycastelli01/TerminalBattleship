@@ -14,3 +14,8 @@ class Ship
     @coordinates.include?(coordinate)
   end
 end
+
+ship = Ship.new({type: "Battleship"})
+ship.store_coordinates(["B3","B4"])
+p ship.at_location?("B3")
+p ship.at_location?("A1") == false
