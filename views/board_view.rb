@@ -7,7 +7,7 @@ module BoardView
     puts "Input coordinates to destroy the computer's fleet!"
   end
 
-  def self.display_boards
+  def self.display_boards(player_board, computer_board)
     computer_label = "COMPUTER".split("")
     player_label = "PLAYER".split("")
 
@@ -20,14 +20,14 @@ module BoardView
     puts letter_labels + "      " + letter_labels
     puts row_separator + "    " + row_separator
 
-    for index in 0...@player_board.board_size
+    for index in 0...player_board.board_size
       if index < 9
-        player_info = " " + (index + 1).to_s + " | " + @player_board.board[index].join(" | ") + " |"
-        computer_info = " " + (index + 1).to_s + " | " + @computer_board.board[index].join(" | ") + " |"
+        player_info = " " + (index + 1).to_s + " | " + player_board.board[index].join(" | ") + " |"
+        computer_info = " " + (index + 1).to_s + " | " + computer_board.board[index].join(" | ") + " |"
         puts player_info + "    " + computer_info
       else
-        player_info = (index + 1).to_s + " | " + @player_board.board[index].join(" | ") + " |"
-        computer_info = (index + 1).to_s + " | " + @computer_board.board[index].join(" | ") + " |"
+        player_info = (index + 1).to_s + " | " + player_board.board[index].join(" | ") + " |"
+        computer_info = (index + 1).to_s + " | " + computer_board.board[index].join(" | ") + " |"
         puts player_info + "    " + computer_info
       end
 

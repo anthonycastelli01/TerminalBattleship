@@ -11,6 +11,7 @@ class Game
 
   def run
     welcome
+    show_boards
   end
 
   private
@@ -18,5 +19,9 @@ class Game
   def welcome
     BoardView.welcome_message
     BoardView.instructions
+  end
+
+  def show_boards
+    BoardView.display_boards(@player_board, @computer_board)
   end
 end
