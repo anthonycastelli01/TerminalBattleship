@@ -1,4 +1,4 @@
-require_relative 'ship'
+require_relative 'models/board'
 
 class Game
   attr_reader :player_board, :computer_board
@@ -21,15 +21,15 @@ class Game
     puts letter_labels + "      " + letter_labels
     puts row_separator + "    " + row_separator
 
-    for index in 0...@player_board.length
+    for index in 0...@player_board.board_size
     #@player_board.each_with_index{|row, index|
       if index < 9
-        player_info = " " + (index + 1).to_s + " | " + @player_board[index].join(" | ") + " |"
-        computer_info = " " + (index + 1).to_s + " | " + @computer_board[index].join(" | ") + " |"
+        player_info = " " + (index + 1).to_s + " | " + @player_board.board[index].join(" | ") + " |"
+        computer_info = " " + (index + 1).to_s + " | " + @computer_board.board[index].join(" | ") + " |"
         puts player_info + "    " + computer_info
       else
-        player_info = (index + 1).to_s + " | " + @player_board[index].join(" | ") + " |"
-        computer_info = (index + 1).to_s + " | " + @computer_board[index].join(" | ") + " |"
+        player_info = (index + 1).to_s + " | " + @player_board.board[index].join(" | ") + " |"
+        computer_info = (index + 1).to_s + " | " + @computer_board.board[index].join(" | ") + " |"
         puts player_info + "    " + computer_info
       end
 

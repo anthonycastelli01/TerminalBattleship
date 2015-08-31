@@ -1,8 +1,11 @@
 require_relative 'ship'
 
 class Board
+  attr_reader :board_size, :board
+
   def initialize
-    @board = Array.new(10) { Array.new(10) { " " }}
+    @board_size = 10
+    @board = Array.new(@board_size) { Array.new(@board_size) { " " }}
     @ships = []
   end
 
