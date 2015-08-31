@@ -1,4 +1,5 @@
 require_relative 'game'
 
 game = Game.new
-game.display_boards
+game.run
+# game.show_boards

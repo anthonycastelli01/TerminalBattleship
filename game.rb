@@ -1,4 +1,5 @@
 require_relative 'models/board'
+require_relative 'views/board_view'
 
 class Game
   attr_reader :player_board, :computer_board
@@ -8,31 +9,14 @@ class Game
     @computer_board = Board.new
   end
 
-  def display_boards
-    computer_label = "COMPUTER".split("")
-    player_label = "PLAYER".split("")
+  def run
+    welcome
+  end
 
-    puts (" " * 12) + player_label.join("   ") + (" " * 24) + computer_label.join("   ")
-    puts
+  private
 
-    letter_labels = (" " * 5) + ("A".."J").to_a.join("   ")
-    row_separator = (" " * 3) + "+" + ("-" * 39) + "+"
-
-    puts letter_labels + "      " + letter_labels
-    puts row_separator + "    " + row_separator
-
-    for index in 0...@player_board.board_size
-      if index < 9
-        player_info = " " + (index + 1).to_s + " | " + @player_board.board[index].join(" | ") + " |"
-        computer_info = " " + (index + 1).to_s + " | " + @computer_board.board[index].join(" | ") + " |"
-        puts player_info + "    " + computer_info
-      else
-        player_info = (index + 1).to_s + " | " + @player_board.board[index].join(" | ") + " |"
-        computer_info = (index + 1).to_s + " | " + @computer_board.board[index].join(" | ") + " |"
-        puts player_info + "    " + computer_info
-      end
-
-      puts row_separator + "    " + row_separator
-    end
+  def welcome
+    BoardView.welcome_message
+    BoardView.instructions
   end
 end
