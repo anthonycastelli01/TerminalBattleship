@@ -1,5 +1,5 @@
-module CoordinateConverter
-  def call_to_array(string)
+module Coordinates
+  def self.call_to_array(string)
     # Input : String of board coordinates eg: "A5", "B15"
     # Output : Array of row, column
 
@@ -12,8 +12,12 @@ module CoordinateConverter
     return [row, column]
   end
 
-  def array_to_call(array_pair)
+  def self.array_to_call(array_pair)
     letter = (array_pair[0] + 65).chr
     number = array_pair[1] + 1
+  end
+
+  def self.valid_string_coordinates?(input_coordinates)
+    input_coordinates.match(/^[a-j]{1}(?:[1-9]|10)$/i) != nil
   end
 end

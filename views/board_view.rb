@@ -1,10 +1,24 @@
 module BoardView
+  def self.clear_screen!
+    print "\e[2J"
+  end
+
+  def self.move_to_home!
+    print "\e[H"
+  end
+
+  def self.reset_display
+    clear_screen!
+    move_to_home!
+  end
+
   def self.welcome_message
     puts "Welcome to Battleship!"
   end
 
   def self.instructions
     puts "Input coordinates to destroy the computer's fleet!"
+    puts
   end
 
   def self.display_boards(player_board, computer_board)
@@ -33,5 +47,33 @@ module BoardView
 
       puts row_separator + "    " + row_separator
     end
+  end
+
+  def self.get_target
+    puts "Where would you like to hit?"
+    print "> "
+    return gets.chomp
+  end
+
+  def self.reject_coordinates(input_string)
+    puts "#{input_string} is not a valid coordinate, please try again!"
+  end
+
+  def self.thanks(final_status)
+    final_status ? succeed_display : fail_display
+  end
+
+  def self.succeed_display
+    reset_display
+    puts "=" * 60
+    puts "=" + (" " * 10) + "CONGRATULATIONS, THANKS FOR PLAYING" + (" " * 10) + "="
+    puts "=" * 60
+  end
+
+  def self.fail_display
+    reset_display
+    puts "+" + ("=" * 58) + "+"
+    puts "|" + (" " * 11) + "YOU HAVE LOST!!, THANKS FOR PLAYING" + (" " * 12) + "|"
+    puts "+" + ("=" * 58) + "+"
   end
 end
